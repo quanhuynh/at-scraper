@@ -1,7 +1,7 @@
 import requests
 import bs4
+import re
 import utils
-
 
 #getMap
 #this function maps the title to the link of the individual postings on a forum page
@@ -29,7 +29,7 @@ def createListing(title, link):
 	soup = bs4.BeautifulSoup(postResponse.text)
 	firstPost = soup.find('li', {'class':'postbit'})
 
-	#LOGISTICS
+	#POSTING TIME
 	timeStamp = firstPost.find('span', {'class':'date'})
 	date = timeStamp.find('span').previousSibling.replace(',\xa0', '')
 
@@ -52,7 +52,8 @@ def parse(text, title, link):
 	titleWords = title.split(" ")
 
 	#Check words and classify
-	contentWords = text.strip().split(" ") + titleWords
+	contentWords = text.strip().replace("\r\n", " ").split(" ") + titleWords
+	#print(contentWords)
 	for i in range(len(contentWords)):
 		word = contentWords[i].lower()
 		##Brand check
@@ -66,8 +67,6 @@ def parse(text, title, link):
 		##Price filter/check
 		priceFilter = word.replace("$", "").replace("tyd", "").replace("obo", "")
 		if price == "unknown" and priceFilter in utils.PRICES:
-			if i+1 != len(contentWords) and contentWords[i+1] != "shots":
-				continue
 			price = priceFilter
 			continue
 		##Length filter/check

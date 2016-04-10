@@ -1,6 +1,6 @@
 BRANDS = ["hoyt", "pse", "mathews", "bowtech", "pearson", "darton", "athens", "martin", "elite", "xpedition", "obsession"]
 COLORS = ["red", "cardinal", "black", "green", "white", "purple", "titanium", "silver", "orange"]
-PRICES = [float(x) for x in (200, 1800)]
+PRICES = [str(x) for x in range(200, 1800)] + [str(float(x)) for x in range(200, 1800)]
 
 def _drawLengthsRange():
 	return [str(float(x)) for x in range(22, 33)] + [str(x+0.5) for x in range(22, 33)]
