@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title> AT Target Compound Forum Scraper </title>
+	</head>
+	<body>
+		<table style="width: 75%; margin: 0 auto;">
+			<tr>
+				<th> Listing Title </th>
+				<th> Brand </th>
+				<th> Color </th>
+				<th> Draw Weight </th>
+				<th> Draw Length </th>
+				<th> Price </th>
+				<th> URL </th>
+			</tr>
+			{% for listing in listings %}
+			<tr>
+				<td>{{listing.title()}}</td>
+				<td>{{listing.brand()}}</td>
+				<td>{{listing.color()}}</td>
+				<td>{{listing.weight()}}</td>
+				<td>{{listing.lengths()}}</td>
+				<td>{{listing.price()}}</td>
+				<td><a href= "http://www.archerytalk.com/vb/{{listing.link()}}"> click </a></td>
+			</tr>
+			{% endfor %}
+		</table>
+	</body>
+</html>

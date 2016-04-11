@@ -35,7 +35,7 @@ def createListing(title, link):
 
 	#CONTENT
 	textContent = firstPost.find('blockquote', {'class':'postcontent'})
-	listingObj = parse(textContent.text, title, link)
+	listingObj = parse(textContent.text, title, link, date)
 	return listingObj
 
 
@@ -92,7 +92,7 @@ def getListingObjs(mapping):
 
 #class describing a single Listing
 class Listing():
-	def __init__(self, title, link, brand="other", weight="unknown", length="unknown", price="unknown", color="unknown"):
+	def __init__(self, title, link, brand, weight, length, price, color):
 		self._title = title
 		self._link = link
 		self._brand = brand
@@ -103,12 +103,21 @@ class Listing():
 		
 	def title(self):
 		return self._title
-
 	def brand(self):
 		return self._brand
-
 	def price(self):
 		return self._price
+	def weight(self):
+		return self._weight
+	def lengths(self):
+		if len(self._length) == 0:
+			return "unknown"
+		else:
+			return self._lengths
+	def color(self):
+		return self._color
+	def link(self):
+		return self._link
 
 	def __str__(self):
 		
