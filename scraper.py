@@ -42,7 +42,7 @@ def createListing(title, link):
 #parse
 #this function creates Listing object from strings text, title and link
 #returns a Listing object
-def parse(text, title, link):
+def parse(text, title, link, date):
 	brand = "unknown"
 	weight = "unknown"
 	length = []
@@ -80,7 +80,7 @@ def parse(text, title, link):
 			weight = weightFilter
 			continue
 
-	return Listing(title, link, brand, weight, length, price, color)
+	return Listing(title, link, date, brand, weight, length, price, color)
 
 #getListingObjs
 #this function gets all the Listing objects given a mapping of titles and links
@@ -92,10 +92,11 @@ def getListingObjs(mapping):
 
 #class describing a single Listing
 class Listing():
-	def __init__(self, title, link, brand, weight, length, price, color):
+	def __init__(self, title, link, date, brand, weight, length, price, color):
 		self._title = title
 		self._link = link
 		self._brand = brand
+		self._date = date
 		self._weight = weight
 		self._length = length
 		self._price = price
@@ -105,15 +106,17 @@ class Listing():
 		return self._title
 	def brand(self):
 		return self._brand
+	def date(self):
+		return self._date
 	def price(self):
 		return self._price
 	def weight(self):
 		return self._weight
-	def lengths(self):
+	def length(self):
 		if len(self._length) == 0:
 			return "unknown"
 		else:
-			return self._lengths
+			return self._length
 	def color(self):
 		return self._color
 	def link(self):

@@ -1,13 +1,25 @@
 <html>
 	<head>
 		<title> AT Target Compound Forum Scraper </title>
+		<style>
+			table {
+				width: 75%; margin: 0 auto; font-size: 17px; border: 2px solid black;
+			}
+			th {
+				border: 2px solid black;
+			}
+			td {
+				padding: 5px 0 5px 0;
+			}
+		</style>
 	</head>
 	<body>
-		<table style="width: 75%; margin: 0 auto;">
+		<table>
 			<tr>
-				<th> Listing Title </th>
+				<th style="width: 30%;"> Listing Title </th>
 				<th> Brand </th>
 				<th> Color </th>
+				<th> Date Posted </th>
 				<th> Draw Weight </th>
 				<th> Draw Length </th>
 				<th> Price </th>
@@ -18,8 +30,9 @@
 				<td>{{listing.title()}}</td>
 				<td>{{listing.brand()}}</td>
 				<td>{{listing.color()}}</td>
+				<td>{{listing.date()}} </td>
 				<td>{{listing.weight()}}</td>
-				<td>{{listing.lengths()}}</td>
+				<td>{{listing.length()}}</td>
 				<td>{{listing.price()}}</td>
 				<td><a href= "http://www.archerytalk.com/vb/{{listing.link()}}"> click </a></td>
 			</tr>
