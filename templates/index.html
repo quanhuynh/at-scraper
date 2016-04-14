@@ -23,18 +23,16 @@
 				<th> Draw Weight </th>
 				<th> Draw Length </th>
 				<th> Price </th>
-				<th> URL </th>
 			</tr>
 			{% for listing in listings %}
 			<tr>
-				<td>{{listing.title()}}</td>
+				<td><a href= "http://www.archerytalk.com/vb/{{listing.link()}}">{{listing.title()}}</a></td>
 				<td>{{listing.brand()}}</td>
 				<td>{{listing.color()}}</td>
 				<td>{{listing.date()}} </td>
 				<td>{{listing.weight()}}</td>
 				<td>{{listing.length()}}</td>
 				<td>{{listing.price()}}</td>
-				<td><a href= "http://www.archerytalk.com/vb/{{listing.link()}}"> click </a></td>
 			</tr>
 			{% endfor %}
 		</table>
